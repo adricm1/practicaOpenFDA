@@ -107,6 +107,7 @@ class OpenFDAHTML():
                     <input type= "submit" value= "List Gender"></input>
                     Limit:<input type= "text" name = "limit"> </input>
                 </form>
+
             </body>
         </html>
         """
@@ -144,6 +145,14 @@ class OpenFDAHTML():
         <html>""" %(s)
         return html
 
+    def errorHTML(self):
+        html= """
+        <html>
+            <head></head>
+                <body> EROR 404 FILE NOT FOUND </body>
+
+        </html>"""
+        return html
 class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 
 
@@ -206,6 +215,7 @@ class testHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 
         else:
             response=404
+            html= openhtml.errorHTML()
 
         self.send_response(response)
         self.send_header(cabecera1,cabecera2)
